@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import routes from './routes/index.js';
+import TaxRate from './components/tax-rate.js';
+import { render } from 'express/lib/response';
 
 const app = express();
 
@@ -37,5 +38,11 @@ app.use((err, req, res, next) => {
     */
 
 routes(app);
+
+render(); {
+    return (
+        TaxRate
+    )
+}
 
 export default app;
