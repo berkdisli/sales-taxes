@@ -1,47 +1,34 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import TaxRate from './components/tax-rate.js';
-import { render } from 'express/lib/response';
+import TaxRate from './components/tax-rate'
 
 const app = express();
 
-/**
-    * Connect to the database
-    */
-
 mongoose.connect('mongodb://localhost');
-
-/**
-    * Middleware
-    */
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// catch 400
+// catch 400 error
 app.use((err, req, res, next) => {
     console.log(err.stack);
     res.status(400).send(`Error: ${res.originUrl} not found`);
     next();
 });
 
-// catch 500
+// catch 500 error
 app.use((err, req, res, next) => {
     console.log(err.stack)
     res.status(500).send(`Error: ${err}`);
     next();
 });
 
-/**
-    * Register the routes
-    */
-
 routes(app);
 
 render(); {
     return (
-        TaxRate
+        <TaxRate />
     )
 }
 
