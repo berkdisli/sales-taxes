@@ -26,4 +26,23 @@ export class TaxRate extends Component {
         return taxFree.some((i) => item.includes(i));
     }
 
+    shoppingCarts(item, price, amount, imported) {
+        let amount = Number(input.substring(0, input.indexOf(" ")));
+        let imported = input.includes("import");
+        let price = Number(input.substring(input.indexOf("at ") + 2).trim());
+        let item = input.trim();
+
+        if (amount === 0) {
+            return `This "${item}" is not available in our store`
+        } else {
+            return {
+                amount: amount,
+                import: imported,
+                item: item,
+                price: price,
+            };
+        }
+    }
+
+
 }
